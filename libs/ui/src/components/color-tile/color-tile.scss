@@ -1,0 +1,29 @@
+
+
+:host {
+    --color-size: 125px;
+    --background-color: inherit;
+
+    display: inline-flex;
+    align-items: center;
+    height: var(--color-size);
+    width: 425px;
+
+    .color {
+        height: 100%;
+        width: var(--color-size);
+        background-color: var(--background-color);
+        border-radius: 1rem;
+        border:1px solid var(--color-light-gray);
+        &-info {
+            padding: .5rem;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+    }
+
+    .copy {
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,17 @@
+.search-input {
+    transition: box-shadow .3s;
+    font-size: 16px;
+    line-height: 22px;
+    padding: 20px 50px;
+    background-color: var(--color-white);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .1), 0 1px 3px 0 rgba(0, 0, 0, .08);
+    width: 100%;
+    font-weight: 400;
+    border: 0;
+    outline: 0;
+    border-radius: 6px;
+    box-sizing: border-box;
+    display: block;
+    -webkit-appearance: none;
+    margin-bottom: 40px;
+}

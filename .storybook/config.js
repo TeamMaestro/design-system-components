@@ -56,3 +56,13 @@ if (process.env.STORYBOOK_DSM) {
 } else {
     configure(loadStories, module);
 }
+
+// Prevents storybook from calling keyboard shortcuts for specific components
+document.body.addEventListener('keydown', event => {
+    try {
+        const iframe = window.self !== window.top;
+        if (iframe) {
+            event.stopPropagation()
+        }
+    } catch (e) { }
+});

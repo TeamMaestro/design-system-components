@@ -1,24 +1,4 @@
 $colors: (
-    'blue': (
-        base: #009cde,
-        contrast: #ffffff
-    ),
-    'dark-blue': (
-        base: #002a3a,
-        contrast: #ffffff
-    ),
-    'medium-blue': (
-        base: #004f71,
-        contrast: #ffffff
-    ),
-    'light-blue': (
-        base: #5bc2e7,
-        contrast: #ffffff
-    ),
-    'mint': (
-        base: #64ccc9,
-        contrast: #ffffff
-    ),
     'charcoal': (
         base: #222731,
         contrast: #ffffff
@@ -33,38 +13,6 @@ $colors: (
     ),
     'light-gray': (
         base: #d9d9d6,
-        contrast: #ffffff
-    ),
-    'purple': (
-        base: #470a68,
-        contrast: #ffffff
-    ),
-    'magenta': (
-        base: #aa0061,
-        contrast: #ffffff
-    ),
-    'red': (
-        base: #e4002b,
-        contrast: #ffffff
-    ),
-    'gold': (
-        base: #eeb33b,
-        contrast: #ffffff
-    ),
-    'yellow': (
-        base: #ffd100,
-        contrast: #ffffff
-    ),
-    'medium-yellow': (
-        base: #B39200,
-        contrast: #ffffff
-    ),
-    'medium-green': (
-        base: #00b140,
-        contrast: #ffffff
-    ),
-    'light-green': (
-        base: #7ccc6c,
         contrast: #ffffff
     ),
     'white': (
@@ -91,7 +39,7 @@ $colors: (
 
 @each $name,
 $color in $colors {
-    $varName: --abbott-color-#{$name};
+    $varName: --app-color-#{$name};
 
     $baseColor: map-get($color, base);
     $contrastColor: map-get($color, contrast);

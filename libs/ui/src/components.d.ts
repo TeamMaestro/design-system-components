@@ -9,113 +9,12 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
   Color,
 } from './interface';
-import {
-  CheckListItems,
-} from './components/form/checklist/checklist-items';
 
 export namespace Components {
-  interface HiveUiAlert {
-    'color': Color;
-  }
-  interface HiveUiButton {
-    'bold': boolean;
-    /**
-    * The color display of the button.
-    */
-    'color': Color;
-    /**
-    * If the button is disabled and cannot be interacted with.
-    */
-    'disabled': boolean;
-    'small': boolean;
-    /**
-    * The type of button to render
-    */
-    'type': 'submit' | 'button' | 'link' | 'menu';
-    'xsmall': boolean;
-  }
-  interface HiveUiCheckbox {
-    /**
-    * If `true`, the checkbox is selected.
-    */
-    'checked': boolean;
-    /**
-    * If `true`, the user cannot interact with the checkbox.
-    */
-    'disabled': boolean;
-    /**
-    * The name of the control, which is submitted with the form data.
-    */
-    'name': string;
-    'small': boolean;
-    /**
-    * The value of the toggle does not mean if it's checked or not, use the `checked` property for that.  The value of a toggle is analogous to the value of a `<input type="checkbox">`, it's only used when the toggle participates in a native `<form>`.
-    */
-    'value': string;
-  }
-  interface HiveUiChecklist {
-    'clear': () => Promise<void>;
-    /**
-    * The  interface for each option to keep track of its value.
-    */
-    'item': CheckListItems;
-    /**
-    * The array that is used to display the options that can be checked.
-    */
-    'items': CheckListItems[];
-    /**
-    * The array that is updated and emitted on each checklist item select.
-    */
-    'select': any[];
-    /**
-    * The value of the item connected to the checkbox.
-    */
-    'value'?: any | null;
-  }
-  interface HiveUiDropdown {}
-  interface HiveUiFormAlert {
-    'type': 'danger' | 'success' | 'warning';
-  }
-  interface HiveUiFormControlIcon {}
-  interface HiveUiHeading {
-    'base': boolean;
-    'bold': boolean;
-    /**
-    * The primary color of the label. Uses the branded CSS variables that are globally available to the application.
-    */
-    'color': Color;
-    'large': boolean;
-    /**
-    * The maximum lines to display before truncating the text. Default behavior shows all lines of text with no truncation.
-    */
-    'maxLines': number;
-    'medium': boolean;
-    'small': boolean;
-    'xbold': boolean;
-    'xlarge': boolean;
-    'xsmall': boolean;
-    'xxlarge': boolean;
-  }
-  interface HiveUiIcon {
-    /**
-    * Specifies the label to use for accessibility. Defaults to the icon name.
-    */
-    'ariaLabel'?: string;
-    'color': Color;
-    /**
-    * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
-    */
-    'lazy': boolean;
-    /**
-    * Specifies which icon to use from the built-in set of icons.
-    */
-    'name'?: string;
-    /**
-    * The size of the icon. Available options are: `"small"` and `"large"`.
-    */
-    'size'?: string;
-  }
   interface HiveUiLabel {
+    'alignCenter': boolean;
+    'alignLeft': boolean;
+    'alignRight': boolean;
     'base': boolean;
     'bold': boolean;
     'book': boolean;
@@ -124,7 +23,8 @@ export namespace Components {
     * The primary color of the label. Uses the branded CSS variables that are globally available to the application.
     */
     'color': Color;
-    'large': boolean;
+    'heading': boolean;
+    'lg': boolean;
     'lowercase': boolean;
     /**
     * The maximum lines to display before truncating the text. Default behavior shows all lines of text with no truncation.
@@ -132,163 +32,52 @@ export namespace Components {
     'maxLines': number;
     'medium': boolean;
     'semibold': boolean;
-    'small': boolean;
-    'type': 'label' | 'text';
+    'sm': boolean;
     'uppercase': boolean;
     'xbold': boolean;
-    'xlarge': boolean;
-    'xsmall': boolean;
-    'xxlarge': boolean;
+    'xl': boolean;
+    'xs': boolean;
+    'xxl': boolean;
+    'xxs': boolean;
   }
-  interface HiveUiProgressRing {
-    'circleClass': string;
+  interface SbAppColorTiles {}
+  interface SbColorTile {
     /**
-    * The foreground color of the ring as it fills.
+    * The cmyk value to render.
     */
-    'color': Color;
+    'cmyk': string;
     /**
-    * The progress percentage to whole for the progress ring.
+    * The hex value to render.
     */
-    'progress': number;
+    'hex': string;
     /**
-    * The radius of the ring in pixels.
+    * The hsl value to render.
     */
-    'radius': number;
+    'hsl': string;
     /**
-    * The stroke width of the progress ring.
+    * `true` if the color tile should attempt to detect the name from an external API.
     */
-    'stroke': number;
+    'nameDetect': boolean;
+    /**
+    * The rgb value to render.
+    */
+    'rgb': string;
+    /**
+    * The CSS variable to attempt to render.
+    */
+    'variable': string;
   }
-  interface HiveUiSearchBar {
+  interface SbContainer {}
+  interface SbSearchBar {
     /**
-    * Auto focuses the search bar.
+    * The target selector to apply the search filtering against.
     */
-    'autofocus': boolean;
-    /**
-    * Set the amount of time, in milliseconds, to wait to trigger the `hiveChange` event after each keystroke.
-    */
-    'debounce': number;
-    /**
-    * If `true`, the user cannot interact with the input.
-    */
-    'disabled': boolean;
-    /**
-    * Sets the input's placeholder.
-    */
-    'placeholder': string;
-    /**
-    * Sets focus on the specified `hive-ui-search-bar`. Use this method instead of the global `input.focus()`.
-    */
-    'setFocus': () => Promise<void>;
-    /**
-    * The value of the search bar.
-    */
-    'value'?: string | null;
-  }
-  interface HiveUiSegment {
-    /**
-    * If `true`, the user cannot interact with the segment.
-    */
-    'disabled': boolean;
-    /**
-    * The value of the segment
-    */
-    'value'?: string | null;
-  }
-  interface HiveUiSegmentButton {
-    /**
-    * If `true`, the segment button is selected
-    */
-    'checked': boolean;
-    /**
-    * If `true`, the user cannot interact with the segment button.
-    */
-    'disabled': boolean;
-    /**
-    * The type of the button
-    */
-    'type': 'submit' | 'button';
-    /**
-    * The value of the segment button.
-    */
-    'value': string;
-  }
-  interface HiveUiToggle {
-    /**
-    * If `true`, the checkbox is selected
-    */
-    'checked': boolean;
-    /**
-    * If `true`, the user cannot interact with the segment button.
-    */
-    'disabled': boolean;
-    /**
-    * The name of the control, which is submitted with the form data.
-    */
-    'name': string;
-    /**
-    * The value of the toggle does not mean if it's checked or not, use the `checked` property for that.  The value of a toggle is analogous to the value of a `<input type="checkbox">`, it's only used when the toggle participates in a native `<form>`.
-    */
-    'value'?: string | null;
+    'target': string;
   }
 }
 
 declare global {
 
-
-  interface HTMLHiveUiAlertElement extends Components.HiveUiAlert, HTMLStencilElement {}
-  var HTMLHiveUiAlertElement: {
-    prototype: HTMLHiveUiAlertElement;
-    new (): HTMLHiveUiAlertElement;
-  };
-
-  interface HTMLHiveUiButtonElement extends Components.HiveUiButton, HTMLStencilElement {}
-  var HTMLHiveUiButtonElement: {
-    prototype: HTMLHiveUiButtonElement;
-    new (): HTMLHiveUiButtonElement;
-  };
-
-  interface HTMLHiveUiCheckboxElement extends Components.HiveUiCheckbox, HTMLStencilElement {}
-  var HTMLHiveUiCheckboxElement: {
-    prototype: HTMLHiveUiCheckboxElement;
-    new (): HTMLHiveUiCheckboxElement;
-  };
-
-  interface HTMLHiveUiChecklistElement extends Components.HiveUiChecklist, HTMLStencilElement {}
-  var HTMLHiveUiChecklistElement: {
-    prototype: HTMLHiveUiChecklistElement;
-    new (): HTMLHiveUiChecklistElement;
-  };
-
-  interface HTMLHiveUiDropdownElement extends Components.HiveUiDropdown, HTMLStencilElement {}
-  var HTMLHiveUiDropdownElement: {
-    prototype: HTMLHiveUiDropdownElement;
-    new (): HTMLHiveUiDropdownElement;
-  };
-
-  interface HTMLHiveUiFormAlertElement extends Components.HiveUiFormAlert, HTMLStencilElement {}
-  var HTMLHiveUiFormAlertElement: {
-    prototype: HTMLHiveUiFormAlertElement;
-    new (): HTMLHiveUiFormAlertElement;
-  };
-
-  interface HTMLHiveUiFormControlIconElement extends Components.HiveUiFormControlIcon, HTMLStencilElement {}
-  var HTMLHiveUiFormControlIconElement: {
-    prototype: HTMLHiveUiFormControlIconElement;
-    new (): HTMLHiveUiFormControlIconElement;
-  };
-
-  interface HTMLHiveUiHeadingElement extends Components.HiveUiHeading, HTMLStencilElement {}
-  var HTMLHiveUiHeadingElement: {
-    prototype: HTMLHiveUiHeadingElement;
-    new (): HTMLHiveUiHeadingElement;
-  };
-
-  interface HTMLHiveUiIconElement extends Components.HiveUiIcon, HTMLStencilElement {}
-  var HTMLHiveUiIconElement: {
-    prototype: HTMLHiveUiIconElement;
-    new (): HTMLHiveUiIconElement;
-  };
 
   interface HTMLHiveUiLabelElement extends Components.HiveUiLabel, HTMLStencilElement {}
   var HTMLHiveUiLabelElement: {
@@ -296,176 +85,43 @@ declare global {
     new (): HTMLHiveUiLabelElement;
   };
 
-  interface HTMLHiveUiProgressRingElement extends Components.HiveUiProgressRing, HTMLStencilElement {}
-  var HTMLHiveUiProgressRingElement: {
-    prototype: HTMLHiveUiProgressRingElement;
-    new (): HTMLHiveUiProgressRingElement;
+  interface HTMLSbAppColorTilesElement extends Components.SbAppColorTiles, HTMLStencilElement {}
+  var HTMLSbAppColorTilesElement: {
+    prototype: HTMLSbAppColorTilesElement;
+    new (): HTMLSbAppColorTilesElement;
   };
 
-  interface HTMLHiveUiSearchBarElement extends Components.HiveUiSearchBar, HTMLStencilElement {}
-  var HTMLHiveUiSearchBarElement: {
-    prototype: HTMLHiveUiSearchBarElement;
-    new (): HTMLHiveUiSearchBarElement;
+  interface HTMLSbColorTileElement extends Components.SbColorTile, HTMLStencilElement {}
+  var HTMLSbColorTileElement: {
+    prototype: HTMLSbColorTileElement;
+    new (): HTMLSbColorTileElement;
   };
 
-  interface HTMLHiveUiSegmentElement extends Components.HiveUiSegment, HTMLStencilElement {}
-  var HTMLHiveUiSegmentElement: {
-    prototype: HTMLHiveUiSegmentElement;
-    new (): HTMLHiveUiSegmentElement;
+  interface HTMLSbContainerElement extends Components.SbContainer, HTMLStencilElement {}
+  var HTMLSbContainerElement: {
+    prototype: HTMLSbContainerElement;
+    new (): HTMLSbContainerElement;
   };
 
-  interface HTMLHiveUiSegmentButtonElement extends Components.HiveUiSegmentButton, HTMLStencilElement {}
-  var HTMLHiveUiSegmentButtonElement: {
-    prototype: HTMLHiveUiSegmentButtonElement;
-    new (): HTMLHiveUiSegmentButtonElement;
-  };
-
-  interface HTMLHiveUiToggleElement extends Components.HiveUiToggle, HTMLStencilElement {}
-  var HTMLHiveUiToggleElement: {
-    prototype: HTMLHiveUiToggleElement;
-    new (): HTMLHiveUiToggleElement;
+  interface HTMLSbSearchBarElement extends Components.SbSearchBar, HTMLStencilElement {}
+  var HTMLSbSearchBarElement: {
+    prototype: HTMLSbSearchBarElement;
+    new (): HTMLSbSearchBarElement;
   };
   interface HTMLElementTagNameMap {
-    'hive-ui-alert': HTMLHiveUiAlertElement;
-    'hive-ui-button': HTMLHiveUiButtonElement;
-    'hive-ui-checkbox': HTMLHiveUiCheckboxElement;
-    'hive-ui-checklist': HTMLHiveUiChecklistElement;
-    'hive-ui-dropdown': HTMLHiveUiDropdownElement;
-    'hive-ui-form-alert': HTMLHiveUiFormAlertElement;
-    'hive-ui-form-control-icon': HTMLHiveUiFormControlIconElement;
-    'hive-ui-heading': HTMLHiveUiHeadingElement;
-    'hive-ui-icon': HTMLHiveUiIconElement;
     'hive-ui-label': HTMLHiveUiLabelElement;
-    'hive-ui-progress-ring': HTMLHiveUiProgressRingElement;
-    'hive-ui-search-bar': HTMLHiveUiSearchBarElement;
-    'hive-ui-segment': HTMLHiveUiSegmentElement;
-    'hive-ui-segment-button': HTMLHiveUiSegmentButtonElement;
-    'hive-ui-toggle': HTMLHiveUiToggleElement;
+    'sb-app-color-tiles': HTMLSbAppColorTilesElement;
+    'sb-color-tile': HTMLSbColorTileElement;
+    'sb-container': HTMLSbContainerElement;
+    'sb-search-bar': HTMLSbSearchBarElement;
   }
 }
 
 declare namespace LocalJSX {
-  interface HiveUiAlert extends JSXBase.HTMLAttributes<HTMLHiveUiAlertElement> {
-    'color'?: Color;
-  }
-  interface HiveUiButton extends JSXBase.HTMLAttributes<HTMLHiveUiButtonElement> {
-    'bold'?: boolean;
-    /**
-    * The color display of the button.
-    */
-    'color'?: Color;
-    /**
-    * If the button is disabled and cannot be interacted with.
-    */
-    'disabled'?: boolean;
-    /**
-    * Event emitted each time the button is clicked
-    */
-    'onTap'?: (event: CustomEvent<any>) => void;
-    'small'?: boolean;
-    /**
-    * The type of button to render
-    */
-    'type'?: 'submit' | 'button' | 'link' | 'menu';
-    'xsmall'?: boolean;
-  }
-  interface HiveUiCheckbox extends JSXBase.HTMLAttributes<HTMLHiveUiCheckboxElement> {
-    /**
-    * If `true`, the checkbox is selected.
-    */
-    'checked'?: boolean;
-    /**
-    * If `true`, the user cannot interact with the checkbox.
-    */
-    'disabled'?: boolean;
-    /**
-    * The name of the control, which is submitted with the form data.
-    */
-    'name'?: string;
-    /**
-    * Emitted when the toggle loses focus.
-    */
-    'onHiveBlur'?: (event: CustomEvent<void>) => void;
-    /**
-    * Emitted when the checked property has changed.
-    */
-    'onHiveChange'?: (event: CustomEvent<any>) => void;
-    /**
-    * Emitted when the toggle has focus.
-    */
-    'onHiveFocus'?: (event: CustomEvent<void>) => void;
-    'small'?: boolean;
-    /**
-    * The value of the toggle does not mean if it's checked or not, use the `checked` property for that.  The value of a toggle is analogous to the value of a `<input type="checkbox">`, it's only used when the toggle participates in a native `<form>`.
-    */
-    'value'?: string;
-  }
-  interface HiveUiChecklist extends JSXBase.HTMLAttributes<HTMLHiveUiChecklistElement> {
-    /**
-    * The  interface for each option to keep track of its value.
-    */
-    'item'?: CheckListItems;
-    /**
-    * The array that is used to display the options that can be checked.
-    */
-    'items'?: CheckListItems[];
-    /**
-    * Emitted when a checkbox is checked or clear function is used.
-    */
-    'onHiveChange'?: (event: CustomEvent<any>) => void;
-    /**
-    * The array that is updated and emitted on each checklist item select.
-    */
-    'select'?: any[];
-    /**
-    * The value of the item connected to the checkbox.
-    */
-    'value'?: any | null;
-  }
-  interface HiveUiDropdown extends JSXBase.HTMLAttributes<HTMLHiveUiDropdownElement> {}
-  interface HiveUiFormAlert extends JSXBase.HTMLAttributes<HTMLHiveUiFormAlertElement> {
-    'type'?: 'danger' | 'success' | 'warning';
-  }
-  interface HiveUiFormControlIcon extends JSXBase.HTMLAttributes<HTMLHiveUiFormControlIconElement> {}
-  interface HiveUiHeading extends JSXBase.HTMLAttributes<HTMLHiveUiHeadingElement> {
-    'base'?: boolean;
-    'bold'?: boolean;
-    /**
-    * The primary color of the label. Uses the branded CSS variables that are globally available to the application.
-    */
-    'color'?: Color;
-    'large'?: boolean;
-    /**
-    * The maximum lines to display before truncating the text. Default behavior shows all lines of text with no truncation.
-    */
-    'maxLines'?: number;
-    'medium'?: boolean;
-    'small'?: boolean;
-    'xbold'?: boolean;
-    'xlarge'?: boolean;
-    'xsmall'?: boolean;
-    'xxlarge'?: boolean;
-  }
-  interface HiveUiIcon extends JSXBase.HTMLAttributes<HTMLHiveUiIconElement> {
-    /**
-    * Specifies the label to use for accessibility. Defaults to the icon name.
-    */
-    'ariaLabel'?: string;
-    'color'?: Color;
-    /**
-    * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
-    */
-    'lazy'?: boolean;
-    /**
-    * Specifies which icon to use from the built-in set of icons.
-    */
-    'name'?: string;
-    /**
-    * The size of the icon. Available options are: `"small"` and `"large"`.
-    */
-    'size'?: string;
-  }
   interface HiveUiLabel extends JSXBase.HTMLAttributes<HTMLHiveUiLabelElement> {
+    'alignCenter'?: boolean;
+    'alignLeft'?: boolean;
+    'alignRight'?: boolean;
     'base'?: boolean;
     'bold'?: boolean;
     'book'?: boolean;
@@ -474,7 +130,8 @@ declare namespace LocalJSX {
     * The primary color of the label. Uses the branded CSS variables that are globally available to the application.
     */
     'color'?: Color;
-    'large'?: boolean;
+    'heading'?: boolean;
+    'lg'?: boolean;
     'lowercase'?: boolean;
     /**
     * The maximum lines to display before truncating the text. Default behavior shows all lines of text with no truncation.
@@ -482,146 +139,55 @@ declare namespace LocalJSX {
     'maxLines'?: number;
     'medium'?: boolean;
     'semibold'?: boolean;
-    'small'?: boolean;
-    'type'?: 'label' | 'text';
+    'sm'?: boolean;
     'uppercase'?: boolean;
     'xbold'?: boolean;
-    'xlarge'?: boolean;
-    'xsmall'?: boolean;
-    'xxlarge'?: boolean;
+    'xl'?: boolean;
+    'xs'?: boolean;
+    'xxl'?: boolean;
+    'xxs'?: boolean;
   }
-  interface HiveUiProgressRing extends JSXBase.HTMLAttributes<HTMLHiveUiProgressRingElement> {
-    'circleClass'?: string;
+  interface SbAppColorTiles extends JSXBase.HTMLAttributes<HTMLSbAppColorTilesElement> {}
+  interface SbColorTile extends JSXBase.HTMLAttributes<HTMLSbColorTileElement> {
     /**
-    * The foreground color of the ring as it fills.
+    * The cmyk value to render.
     */
-    'color'?: Color;
+    'cmyk'?: string;
     /**
-    * The progress percentage to whole for the progress ring.
+    * The hex value to render.
     */
-    'progress'?: number;
+    'hex'?: string;
     /**
-    * The radius of the ring in pixels.
+    * The hsl value to render.
     */
-    'radius'?: number;
+    'hsl'?: string;
     /**
-    * The stroke width of the progress ring.
+    * `true` if the color tile should attempt to detect the name from an external API.
     */
-    'stroke'?: number;
+    'nameDetect'?: boolean;
+    /**
+    * The rgb value to render.
+    */
+    'rgb'?: string;
+    /**
+    * The CSS variable to attempt to render.
+    */
+    'variable'?: string;
   }
-  interface HiveUiSearchBar extends JSXBase.HTMLAttributes<HTMLHiveUiSearchBarElement> {
+  interface SbContainer extends JSXBase.HTMLAttributes<HTMLSbContainerElement> {}
+  interface SbSearchBar extends JSXBase.HTMLAttributes<HTMLSbSearchBarElement> {
     /**
-    * Auto focuses the search bar.
+    * The target selector to apply the search filtering against.
     */
-    'autofocus'?: boolean;
-    /**
-    * Set the amount of time, in milliseconds, to wait to trigger the `hiveChange` event after each keystroke.
-    */
-    'debounce'?: number;
-    /**
-    * If `true`, the user cannot interact with the input.
-    */
-    'disabled'?: boolean;
-    /**
-    * Emitted when the input loses focus.
-    */
-    'onHiveBlur'?: (event: CustomEvent<void>) => void;
-    /**
-    * Emitted when the value has changed.
-    */
-    'onHiveChange'?: (event: CustomEvent<any>) => void;
-    /**
-    * Emitted when the input has focus.
-    */
-    'onHiveFocus'?: (event: CustomEvent<void>) => void;
-    /**
-    * Emitted when the keyboard input ocurred.
-    */
-    'onHiveInput'?: (event: CustomEvent<KeyboardEvent>) => void;
-    /**
-    * Sets the input's placeholder.
-    */
-    'placeholder'?: string;
-    /**
-    * The value of the search bar.
-    */
-    'value'?: string | null;
-  }
-  interface HiveUiSegment extends JSXBase.HTMLAttributes<HTMLHiveUiSegmentElement> {
-    /**
-    * If `true`, the user cannot interact with the segment.
-    */
-    'disabled'?: boolean;
-    /**
-    * Emitted when the value property has changed.
-    */
-    'onHiveChange'?: (event: CustomEvent<any>) => void;
-    /**
-    * The value of the segment
-    */
-    'value'?: string | null;
-  }
-  interface HiveUiSegmentButton extends JSXBase.HTMLAttributes<HTMLHiveUiSegmentButtonElement> {
-    /**
-    * If `true`, the segment button is selected
-    */
-    'checked'?: boolean;
-    /**
-    * If `true`, the user cannot interact with the segment button.
-    */
-    'disabled'?: boolean;
-    /**
-    * Emitted when the segment button is clicked.
-    */
-    'onHiveSelect'?: (event: CustomEvent<void>) => void;
-    /**
-    * The type of the button
-    */
-    'type'?: 'submit' | 'button';
-    /**
-    * The value of the segment button.
-    */
-    'value'?: string;
-  }
-  interface HiveUiToggle extends JSXBase.HTMLAttributes<HTMLHiveUiToggleElement> {
-    /**
-    * If `true`, the checkbox is selected
-    */
-    'checked'?: boolean;
-    /**
-    * If `true`, the user cannot interact with the segment button.
-    */
-    'disabled'?: boolean;
-    /**
-    * The name of the control, which is submitted with the form data.
-    */
-    'name'?: string;
-    /**
-    * Emitted when a new option is selected.
-    */
-    'onHiveChange'?: (event: CustomEvent<any>) => void;
-    /**
-    * The value of the toggle does not mean if it's checked or not, use the `checked` property for that.  The value of a toggle is analogous to the value of a `<input type="checkbox">`, it's only used when the toggle participates in a native `<form>`.
-    */
-    'value'?: string | null;
+    'target'?: string;
   }
 
   interface IntrinsicElements {
-    'hive-ui-alert': HiveUiAlert;
-    'hive-ui-button': HiveUiButton;
-    'hive-ui-checkbox': HiveUiCheckbox;
-    'hive-ui-checklist': HiveUiChecklist;
-    'hive-ui-dropdown': HiveUiDropdown;
-    'hive-ui-form-alert': HiveUiFormAlert;
-    'hive-ui-form-control-icon': HiveUiFormControlIcon;
-    'hive-ui-heading': HiveUiHeading;
-    'hive-ui-icon': HiveUiIcon;
     'hive-ui-label': HiveUiLabel;
-    'hive-ui-progress-ring': HiveUiProgressRing;
-    'hive-ui-search-bar': HiveUiSearchBar;
-    'hive-ui-segment': HiveUiSegment;
-    'hive-ui-segment-button': HiveUiSegmentButton;
-    'hive-ui-toggle': HiveUiToggle;
+    'sb-app-color-tiles': SbAppColorTiles;
+    'sb-color-tile': SbColorTile;
+    'sb-container': SbContainer;
+    'sb-search-bar': SbSearchBar;
   }
 }
 

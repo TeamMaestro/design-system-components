@@ -1,21 +1,11 @@
 export type Color =
-    'blue' |
-    'black' |
+    'primary' |
+    'secondary' |
+    'success' |
+    'danger' |
     'white' |
-    'dark-blue' |
-    'medium-blue' |
-    'light-blue' |
-    'mint' |
-    'charcoal' |
-    'dark-gray' |
-    'medium-gray' |
+    'black' |
     'light-gray' |
-    'purple' |
-    'magenta' |
-    'red' |
-    'gold' |
-    'yellow' |
-    'medium-yellow' |
-    'medium-green' |
-    'light-green' |
-    'app-light-gray';
+    'medium-gray' |
+    'dark-gray' |
+    'charcoal';

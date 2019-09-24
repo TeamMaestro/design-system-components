@@ -1,0 +1,16 @@
+
+:host {
+    padding: 1.25rem;
+    margin-bottom: 3rem;
+    border: 1px solid #EFF2F7;
+    border-radius: 0.25rem;
+    display: block;
+
+    > * {
+        margin: 0.5rem 0;
+    }
+
+    *:not(:last-child) {
+        margin-right: 0.5rem;
+    }
+}

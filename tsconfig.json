@@ -14,7 +14,7 @@
     "typeRoots": ["node_modules/@types"],
     "lib": ["es2018", "dom"],
     "paths": {
-      "@hive/ui": ["libs/ui/index.ts"]
+      "@teamhive/design-system-components": ["libs/ui/index.ts"]
     },
     "rootDir": "."
   }

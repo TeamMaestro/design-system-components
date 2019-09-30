@@ -5,7 +5,7 @@ import { analytics } from './analytics';
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 
-import '@hive/ui';
+import '@teamhive/design-system-components';
 
 if (environment.production) {
     enableProdMode();

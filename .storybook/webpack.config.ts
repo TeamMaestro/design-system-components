@@ -85,7 +85,7 @@ module.exports = async ({ config }) => {
         }
     });
 
-    cssGlobalFilePath = path.join(__dirname, `../${uiDistPath}/hive/hive.css`);
+    cssGlobalFilePath = path.join(__dirname, `../${uiDistPath}/design-system-components/design-system-components.css`);
     try {
         if (fs.existsSync(cssGlobalFilePath)) {
             config.entry.push(cssGlobalFilePath);
@@ -102,9 +102,9 @@ module.exports = async ({ config }) => {
     config.plugins.push(
         new CopyPlugin([
             {
-                from: 'hive.css',
+                from: 'design-system-components.css',
                 to: './',
-                context: `${uiDistPath}/hive`
+                context: `${uiDistPath}/design-system-components`
             },
             {
                 from: '**/*',

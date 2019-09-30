@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,700,800,900&display=swap');
+
+:root {
+    --primary-font-family: 'Nunito Sans', sans-serif;
+    --ion-font-family: var(--primary-font-family);
+}
+
+html,
+body,
+button {
+    font-family: 'Nunito Sans', sans-serif;
+}

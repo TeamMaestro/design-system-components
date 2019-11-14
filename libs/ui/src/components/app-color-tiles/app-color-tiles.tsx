@@ -1,4 +1,4 @@
-import { Component, h, State } from "@stencil/core";
+import { Component, h, State, Prop } from "@stencil/core";
 import { isHexColor } from "../../utils/colors";
 
 @Component({
@@ -7,6 +7,12 @@ import { isHexColor } from "../../utils/colors";
     shadow: true
 })
 export class AppColorTiles {
+
+    /**
+     * The pattern to filter the matched CSS variables by.
+     * Used to target only the names of the CSS variables available from your projects/lib/app.
+     */
+    @Prop() pattern: string;
 
     @State() private colorVariables: any[] = [];
 
@@ -31,7 +37,16 @@ export class AppColorTiles {
                         for (var k = 0; k < styleSheet.cssRules[j].style.length; k++) {
                             let name = styleSheet.cssRules[j].style[k];
                             if (name.startsWith('--') && cssVars.indexOf(name) == -1) {
-                                cssVars.push(name);
+                                // Checks if a pattern was supplied
+                                if (this.pattern) {
+                                    // Checks if the pattern matches
+                                    const pattern = new RegExp(this.pattern);
+                                    if (pattern.test(name)) {
+                                        cssVars.push(name);
+                                    }
+                                } else {
+                                    cssVars.push(name);
+                                }
                             }
                         }
                     } catch (error) { }

@@ -40,7 +40,12 @@ export namespace Components {
     'xxl': boolean;
     'xxs': boolean;
   }
-  interface SbAppColorTiles {}
+  interface SbAppColorTiles {
+    /**
+    * The pattern to filter the matched CSS variables by. Used to target only the names of the CSS variables available from your projects/lib/app.
+    */
+    'pattern': string;
+  }
   interface SbColorTile {
     /**
     * The cmyk value to render.
@@ -147,7 +152,12 @@ declare namespace LocalJSX {
     'xxl'?: boolean;
     'xxs'?: boolean;
   }
-  interface SbAppColorTiles extends JSXBase.HTMLAttributes<HTMLSbAppColorTilesElement> {}
+  interface SbAppColorTiles extends JSXBase.HTMLAttributes<HTMLSbAppColorTilesElement> {
+    /**
+    * The pattern to filter the matched CSS variables by. Used to target only the names of the CSS variables available from your projects/lib/app.
+    */
+    'pattern'?: string;
+  }
   interface SbColorTile extends JSXBase.HTMLAttributes<HTMLSbColorTileElement> {
     /**
     * The cmyk value to render.

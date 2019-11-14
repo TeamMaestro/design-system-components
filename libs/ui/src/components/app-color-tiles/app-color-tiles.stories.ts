@@ -21,4 +21,13 @@ storiesOf('Design System|App Color Tiles', module)
                 <sb-app-color-tiles></sb-app-color-tiles>
             </sb-container>
         `
+    }))
+    .add('Pattern', () => ({
+        template: `
+            <sb-container>
+                <!-- Introduces Searching Capabilities to any Story -->
+                <sb-search-bar target="sb-app-color-tiles"></sb-search-bar>
+                <sb-app-color-tiles pattern="^--ion"></sb-app-color-tiles>
+            </sb-container>
+        `
     }));
